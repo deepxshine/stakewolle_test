@@ -19,8 +19,10 @@
 ```pip install -r requriments.txt```
 
 ## Перед запуском прокта
-Создать и заполнить .end
-```nano .env```
+Создать и заполнить .env
+```
+nano .env
+```
 Пример заполения .env
 ```DB_HOST=localhost
 DB_PORT=5432
