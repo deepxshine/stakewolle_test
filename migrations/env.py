@@ -8,7 +8,6 @@ from alembic import context
 
 from scr.config import DB_NAME, DB_PASS, DB_PORT, DB_USER, DB_HOST
 from scr.auth.models import Base as auth_base
-from scr.referal.models import Base as referal_base
 
 
 sys.path.append(os.path. join(sys.path[0], 'sro'))
@@ -32,7 +31,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = [auth_base.metadata, referal_base.metadata]
+target_metadata = auth_base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

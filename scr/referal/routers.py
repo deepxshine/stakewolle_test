@@ -7,8 +7,7 @@ from fastapi_cache.decorator import cache
 
 from database import get_async_session
 from auth.base_config import current_user
-from auth.models import User
-from .models import ReferalCode, Member
+from auth.models import User, ReferalCode, Member
 
 
 router = APIRouter(prefix='/referal')
@@ -55,7 +54,6 @@ async def create_member(referal_code,
         referal=user.id,
         referal_code=referal_code.id,
         )
-    
     session.add(stmn)
     await session.commit()
     await session.refresh(stmn)
@@ -67,7 +65,7 @@ async def create_member(referal_code,
 
 
 @router.post('/create_referal_code')
-async def create_referal_code(lifetime: datetime, 
+async def create_referal_code(lifetime: datetime,
                               user: User = Depends(current_user),
                               session:
                               AsyncSession = Depends(get_async_session)):
@@ -82,7 +80,6 @@ async def create_referal_code(lifetime: datetime,
                     'status': 'error',
                     'detail': 'Error date format'
             })
-    
     query = select(ReferalCode).where(
         ReferalCode.creator == user.id).where(
             ReferalCode.is_active)
@@ -159,7 +156,7 @@ async def get_referal_code(email,
 
 
 @router.get('/referers')
-async def get_referers(pk: int, 
+async def get_referers(pk: int,
                        session: AsyncSession = Depends(get_async_session)):
     query = select(User).where(User.id == pk)
     result = await session.execute(query)
