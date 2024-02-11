@@ -18,10 +18,21 @@
 ## Установка зависисостей
 ```pip install -r requriments.txt```
 
+## Перед запуском прокта
+Создать и заполнить .end
+```nano .env```
+Пример заполения .env
+```DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASS=postgres
+SECRET=secret
+```
+
 ## Для запуска проекта
 Выполните командды:
 ```bash
-  
   alembic revision --autogenerate -m "Inital"
   alembic upgrade head
   cd scr/
